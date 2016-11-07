@@ -51,9 +51,9 @@ public class MainActivity extends AppCompatActivity implements PermissionRequest
                 new ColorAdjustmentTool(R.string.tool_name_color_adjust, R.drawable.imgly_icon_tool_adjust),
                 new Divider(),
                 new TextEditorTool(R.string.tool_name_text, R.drawable.imgly_icon_tool_text),
-                new StickerEditorTool(R.string.tool_name_sticker, R.drawable.imgly_icon_tool_sticker),
+                new StickerEditorTool(R.string.tool_name_sticker, R.drawable.imgly_icon_tool_sticker)
 
-        )
+        );
         new CameraPreviewBuilder(this)
                 .setSettingsList(settingsList)
                 .startActivityForResult(this, CAMERA_PREVIEW_RESULT);
