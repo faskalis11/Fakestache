@@ -5,4 +5,5 @@
     <string name="tool_name_color_adjust">Adjust</string>
     <string name="tool_name_text">Text</string>
     <string name="tool_name_sticker">Adjust</string>
+    <string name="title_activity_edit">Gallery</string>
 </resources>
