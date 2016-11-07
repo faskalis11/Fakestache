@@ -4,7 +4,7 @@ import ly.img.android.ImgLySdk;
 
 
 
-public class Fakestache extends android.app.Application{
+public class Application extends android.app.Application{
     @Override
     public void onCreate() {
         super.onCreate();
