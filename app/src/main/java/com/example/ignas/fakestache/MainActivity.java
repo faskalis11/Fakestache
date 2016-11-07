@@ -21,7 +21,7 @@ import ly.img.android.ui.activities.CameraPreviewBuilder;
 import ly.img.android.ui.utilities.PermissionRequest;
 
 public class MainActivity extends AppCompatActivity implements PermissionRequest.Response{
-    private static final String FOLDER = "ImgLy";
+    private static final String FOLDER = "Fakestache";
     public static int CAMERA_PREVIEW_RESULT = 1;
 
     @Override
