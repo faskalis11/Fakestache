@@ -1,18 +1,17 @@
 package com.example.ignas.fakestache;
 
-import android.content.Intent;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
 
 import ly.img.android.sdk.models.config.Divider;
+import ly.img.android.sdk.models.config.ImageStickerConfig;
 import ly.img.android.sdk.models.constant.Directory;
 import ly.img.android.sdk.models.state.CameraSettings;
 import ly.img.android.sdk.models.state.EditorSaveSettings;
@@ -53,6 +52,8 @@ public class EditActivity extends AppCompatActivity implements PermissionRequest
                 new TextEditorTool(R.string.tool_name_text, R.drawable.imgly_icon_tool_text),
                 new StickerEditorTool(R.string.tool_name_sticker, R.drawable.imgly_icon_tool_sticker)
 
+        ).setStickers(
+                new ImageStickerConfig(R.string.moustache1, R.drawable.moustache1, R.drawable.moustache1)
         );
         new CameraPreviewBuilder(this)
                 .setSettingsList(settingsList)
