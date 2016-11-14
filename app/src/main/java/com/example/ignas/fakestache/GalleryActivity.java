@@ -1,21 +1,13 @@
 package com.example.ignas.fakestache;
 
 import android.content.Intent;
-import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-
-import java.util.ArrayList;
 
 public class GalleryActivity extends AppCompatActivity {
 
@@ -64,7 +56,7 @@ public class GalleryActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GalleryActivity.this, EditActivity.class);
+                Intent intent = new Intent(GalleryActivity.this, CameraActivity.class);
                 startActivity(intent);
             }
         });

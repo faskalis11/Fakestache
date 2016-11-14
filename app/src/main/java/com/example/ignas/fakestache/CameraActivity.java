@@ -11,7 +11,6 @@ import android.widget.Toast;
 import java.io.File;
 
 import ly.img.android.sdk.models.config.Divider;
-import ly.img.android.sdk.models.config.ImageStickerConfig;
 import ly.img.android.sdk.models.constant.Directory;
 import ly.img.android.sdk.models.state.CameraSettings;
 import ly.img.android.sdk.models.state.EditorSaveSettings;
@@ -22,10 +21,10 @@ import ly.img.android.sdk.tools.FilterEditorTool;
 import ly.img.android.sdk.tools.StickerEditorTool;
 import ly.img.android.sdk.tools.TextEditorTool;
 import ly.img.android.ui.activities.CameraPreviewActivity;
-import ly.img.android.ui.activities.CameraPreviewBuilder;
+import ly.img.android.ui.activities.PhotoEditorBuilder;
 import ly.img.android.ui.utilities.PermissionRequest;
 
-public class EditActivity extends AppCompatActivity implements PermissionRequest.Response{
+public class CameraActivity extends AppCompatActivity implements PermissionRequest.Response{
     private static final String FOLDER = "Fakestache";
     public static int CAMERA_PREVIEW_RESULT = 1;
 
@@ -55,9 +54,12 @@ public class EditActivity extends AppCompatActivity implements PermissionRequest
         )/*.setStickers(
                 new ImageStickerConfig(R.string.moustache1, R.drawable.moustache1, R.drawable.moustache1)
         )*/;
-        new CameraPreviewBuilder(this)
+
+        new PhotoEditorBuilder(this).setSettingsList(settingsList).startActivityForResult(this, CAMERA_PREVIEW_RESULT);
+
+        /*new CameraPreviewBuilder(this)
                 .setSettingsList(settingsList)
-                .startActivityForResult(this, CAMERA_PREVIEW_RESULT);
+                .startActivityForResult(this, CAMERA_PREVIEW_RESULT);*/
     }
 
     @Override
