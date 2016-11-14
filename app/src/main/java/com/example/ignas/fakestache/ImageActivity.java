@@ -50,8 +50,8 @@ public class ImageActivity extends AppCompatActivity {
     }
 
     public void viewImage() {
-        Bitmap bitmap;
-        Drawable drawable =new BitmapDrawable(bitmap); // iš list
+        //Bitmap bitmap;
+        //Drawable drawable =new BitmapDrawable(bitmap); // iš list
         imageSwitcher.setImageDrawable(drawable);
     }
 
