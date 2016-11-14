@@ -52,9 +52,9 @@ public class EditActivity extends AppCompatActivity implements PermissionRequest
                 new TextEditorTool(R.string.tool_name_text, R.drawable.imgly_icon_tool_text),
                 new StickerEditorTool(R.string.tool_name_sticker, R.drawable.imgly_icon_tool_sticker)
 
-        ).setStickers(
+        )/*.setStickers(
                 new ImageStickerConfig(R.string.moustache1, R.drawable.moustache1, R.drawable.moustache1)
-        );
+        )*/;
         new CameraPreviewBuilder(this)
                 .setSettingsList(settingsList)
                 .startActivityForResult(this, CAMERA_PREVIEW_RESULT);
