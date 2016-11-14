@@ -52,8 +52,8 @@ public class MyGridAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.grid_item, null);
         }
 
-        TextView text = (TextView) convertView.findViewById(R.id.textView);
-        text.setText(items.get(items.size() - position - 1).getPath());
+        //TextView text = (TextView) convertView.findViewById(R.id.textView);
+        //text.setText(items.get(items.size() - position - 1).getPath());
 
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
         Bitmap image = items.get(items.size() - position - 1).getImage();

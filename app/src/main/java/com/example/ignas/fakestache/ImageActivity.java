@@ -39,7 +39,7 @@ public class ImageActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         String path = b.getString(GalleryFragment.IMAGEPATH);
 
-        
+
 
         /*mSwitcher.setInAnimation(AnimationUtils.loadAnimation(this,
                 android.R.anim.fade_in));
