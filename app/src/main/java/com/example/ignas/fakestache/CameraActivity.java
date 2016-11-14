@@ -21,7 +21,7 @@ import ly.img.android.sdk.tools.FilterEditorTool;
 import ly.img.android.sdk.tools.StickerEditorTool;
 import ly.img.android.sdk.tools.TextEditorTool;
 import ly.img.android.ui.activities.CameraPreviewActivity;
-import ly.img.android.ui.activities.PhotoEditorBuilder;
+import ly.img.android.ui.activities.CameraPreviewBuilder;
 import ly.img.android.ui.utilities.PermissionRequest;
 
 public class CameraActivity extends AppCompatActivity implements PermissionRequest.Response{
@@ -55,11 +55,11 @@ public class CameraActivity extends AppCompatActivity implements PermissionReque
                 new ImageStickerConfig(R.string.moustache1, R.drawable.moustache1, R.drawable.moustache1)
         )*/;
 
-        new PhotoEditorBuilder(this).setSettingsList(settingsList).startActivityForResult(this, CAMERA_PREVIEW_RESULT);
 
-        /*new CameraPreviewBuilder(this)
+
+        new CameraPreviewBuilder(this)
                 .setSettingsList(settingsList)
-                .startActivityForResult(this, CAMERA_PREVIEW_RESULT);*/
+                .startActivityForResult(this, CAMERA_PREVIEW_RESULT);
     }
 
     @Override

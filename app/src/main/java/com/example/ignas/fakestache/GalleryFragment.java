@@ -59,7 +59,6 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
 
         gridItems = createGridItems(path);
         MyGridAdapter adapter = new MyGridAdapter(this.getContext(), gridItems);
-        // fdsfsdggds
         // Set the grid adapter on createView?
         //GridView gridView = (GridView) findViewById(R.id.gridView);
         gridView.setAdapter(adapter);

@@ -28,6 +28,10 @@
             android:name=".CameraActivity"
             android:label="@string/title_activity_edit"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EditActivity"
+            android:label="@string/title_activity_edit"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
