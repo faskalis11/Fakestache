@@ -1,5 +1,6 @@
 package com.example.ignas.fakestache;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
     String path;
     List<GridViewItem> gridItems;
     GridView gridView;
+    public static final String IMAGEPATH = "IMAGEPATH";
 
     public static GalleryFragment newInstance(String path){
         GalleryFragment fragment = new GalleryFragment();
@@ -54,7 +56,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
      * @param path
      *            The directory in which to search for images
      */
-    private void setGridAdapter(String path) {
+    private void setGridAdapter(final String path) {
         // Create a new grid adapter
 
         gridItems = createGridItems(path);
@@ -65,7 +67,17 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
         gridView.setAdapter(adapter);
 
         // Set the onClickListener
-        gridView.setOnItemClickListener(this);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), ImageActivity.class);
+                Bundle b = new Bundle();
+                b.putString(IMAGEPATH, gridItems.get(position).getPath());
+                intent.putExtras(b);
+                startActivity(intent);
+
+            }
+        });
     }
 
 
