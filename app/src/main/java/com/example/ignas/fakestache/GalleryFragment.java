@@ -1,12 +1,10 @@
 package com.example.ignas.fakestache;
 
-import android.content.Intent;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,12 +32,6 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
         return fragment;
     }
 
-    /*@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }*/
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
@@ -48,7 +40,11 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
         textView.setText(getArguments().getString("text"));
 
         gridView = (GridView) view.findViewById(R.id.gridView); //!!! anything else?
-        setGridAdapter(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath());
+        String absPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
+        Log.d("DCIM", absPath);
+        setGridAdapter(absPath);
+
+
 
         return view;
     }
@@ -86,10 +82,13 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
         for (File file : files) {
 
             // Add the directories containing images or sub-directories, trinti
-            if (file.isDirectory()
-                    && file.listFiles(new ImageFileFilter()).length > 0) {
+            if (file.isDirectory() && file.listFiles(new ImageFileFilter()).length > 0) {
+                    if(!file.getName().equals(".thumbnails")){
+                        items.addAll(createGridItems(file.getAbsolutePath()));
+                        Log.d("DCIM", "Name: " + file.getName() + " Path: " + file.getPath());
+                   }
 
-                items.add(new GridViewItem(file.getAbsolutePath(), true, null));
+                //items.add(new GridViewItem(file.getAbsolutePath(), true, null));
             }
             // Add the images
             else {

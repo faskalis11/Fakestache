@@ -35,13 +35,13 @@ public class MyGridAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return items.get(position);
+        return items.get(items.size() - position - 1);
     }
 
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return items.size() - position - 1;
     }
 
 
@@ -53,10 +53,10 @@ public class MyGridAdapter extends BaseAdapter {
         }
 
         TextView text = (TextView) convertView.findViewById(R.id.textView);
-        text.setText(items.get(position).getPath());
+        text.setText(items.get(items.size() - position - 1).getPath());
 
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
-        Bitmap image = items.get(position).getImage();
+        Bitmap image = items.get(items.size() - position - 1).getImage();
 
         if (image != null){
             imageView.setImageBitmap(image);
