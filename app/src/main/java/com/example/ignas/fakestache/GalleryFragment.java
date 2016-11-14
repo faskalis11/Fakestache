@@ -2,7 +2,6 @@ package com.example.ignas.fakestache;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -19,14 +17,15 @@ import java.util.List;
 
 public class GalleryFragment extends Fragment implements AdapterView.OnItemClickListener {
 
+    String path;
     List<GridViewItem> gridItems;
-    GridView gridView; //
+    GridView gridView;
 
-    public static GalleryFragment newInstance(String text){
+    public static GalleryFragment newInstance(String path){
         GalleryFragment fragment = new GalleryFragment();
 
         Bundle args = new Bundle();
-        args.putString("text", text);
+        args.putString("path", path);
         fragment.setArguments(args);
 
         return fragment;
@@ -36,13 +35,13 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
 
-        TextView textView = (TextView) view.findViewById(R.id.textView);
-        textView.setText(getArguments().getString("text"));
+        path = getArguments().getString("path");
+
 
         gridView = (GridView) view.findViewById(R.id.gridView); //!!! anything else?
-        String absPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
-        Log.d("DCIM", absPath);
-        setGridAdapter(absPath);
+
+        Log.d("DCIM", path);
+        setGridAdapter(path);
 
 
 
