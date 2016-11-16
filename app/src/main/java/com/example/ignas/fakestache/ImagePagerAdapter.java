@@ -29,7 +29,7 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new ImageFragment.newInstance(items.get(position));
+        return new ImageFragment.newInstance(items.get(position).getPath());
     }
 
     @Override
