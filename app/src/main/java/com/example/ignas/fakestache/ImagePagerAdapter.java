@@ -29,7 +29,7 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new ImageFragment.newInstance(items.get(position).getPath());
+        return ImageFragment.newInstance(items.get(position).getPath());
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
 
 
     /**
-            * Go through the specified directory, and create items to display in our
+    *Go through the specified directory, and create items to display in our
     * GridView
     */
     private List<ImageItem> createItems(String directoryPath) {

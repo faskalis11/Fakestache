@@ -71,7 +71,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), ImageActivity.class);
                 Bundle b = new Bundle();
-                b.putString(IMAGEPATH, gridItems.get(position).getPath());
+                b.putString(IMAGEPATH, path);
                 intent.putExtras(b);
                 startActivity(intent);
 

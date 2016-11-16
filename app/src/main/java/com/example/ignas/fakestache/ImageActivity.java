@@ -20,11 +20,11 @@ public class ImageActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Bundle bundle = getIntent().getExtras();
-        //String imagePath = bundle.getString(GalleryFragment.IMAGEPATH);
+        Bundle bundle = getIntent().getExtras();
+        String imagePath = bundle.getString(GalleryFragment.IMAGEPATH);
         pager = (ViewPager) findViewById(R.id.imagePager);
 
-        pagerAdapter = new GridAdapter(getApplicationContext(), )
+        pagerAdapter = new ImagePagerAdapter(getSupportFragmentManager(), imagePath);
 
 
 
