@@ -29,6 +29,8 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        position = items.size() - position - 1;
+        Log.d("Path", items.get(position).getPath());
         return ImageFragment.newInstance(items.get(position).getPath());
     }
 
@@ -60,8 +62,8 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
                 // Add the images
                 else {
                     Bitmap image = BitmapHelper.decodeBitmapFromFile(file.getAbsolutePath(),
-                            50,
-                            50);
+                            200,
+                            200);
                     items.add(new ImageItem(file.getAbsolutePath(), false, image));
                 }
             }

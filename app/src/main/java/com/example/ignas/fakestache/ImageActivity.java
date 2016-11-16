@@ -7,6 +7,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 public class ImageActivity extends AppCompatActivity {
@@ -22,9 +23,13 @@ public class ImageActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         String imagePath = bundle.getString(GalleryFragment.IMAGEPATH);
-        pager = (ViewPager) findViewById(R.id.imagePager);
+        int position = bundle.getInt(GalleryFragment.POSITION);
 
+        pager = (ViewPager) findViewById(R.id.imagePager);
         pagerAdapter = new ImagePagerAdapter(getSupportFragmentManager(), imagePath);
+        pager.setAdapter(pagerAdapter);
+        Log.d("Pager", "Position: " + position);
+        pager.setCurrentItem(position);
 
 
 

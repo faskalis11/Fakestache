@@ -22,6 +22,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
     List<ImageItem> gridItems;
     GridView gridView;
     public static final String IMAGEPATH = "IMAGEPATH";
+    public static final String POSITION = "POSITION";
 
     public static GalleryFragment newInstance(String path){
         GalleryFragment fragment = new GalleryFragment();
@@ -60,6 +61,10 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
         // Create a new grid adapter
 
         gridItems = createGridItems(path);
+        for (ImageItem item : gridItems){
+            Log.d("GridItem", item.getPath());
+        }
+
         GridAdapter adapter = new GridAdapter(this.getContext(), gridItems);
         // Set the grid adapter on createView?
         //GridView gridView = (GridView) findViewById(R.id.gridView);
@@ -72,6 +77,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
                 Intent intent = new Intent(getActivity(), ImageActivity.class);
                 Bundle b = new Bundle();
                 b.putString(IMAGEPATH, path);
+                b.putInt(POSITION, position);
                 intent.putExtras(b);
                 startActivity(intent);
 
@@ -93,19 +99,19 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
             for (File file : files) {
 
                 // Add the directories containing images or sub-directories, trinti
-                if (file.isDirectory() && file.listFiles(new ImageFileFilter()).length > 0) {
-                    if (!file.getName().equals(".thumbnails")) {
-                        items.addAll(createGridItems(file.getAbsolutePath()));
-                        Log.d("DCIM", "Name: " + file.getName() + " Path: " + file.getPath());
+                if (!file.isFile() && file.listFiles(new ImageFileFilter()).length > 0) {
+                        if (!file.getName().equals(".thumbnails")) {
+                            items.addAll(createGridItems(file.getAbsolutePath()));
+                            Log.d("DCIM", "Name: " + file.getName() + " Path: " + file.getPath());
+                        }
+                    } else {
+                        Bitmap image = BitmapHelper.decodeBitmapFromFile(file.getAbsolutePath(),
+                                200,
+                                200);
+                        Log.d("ImageFile", file.getName());
+                        items.add(new ImageItem(file.getAbsolutePath(), false, image));
                     }
-                }
-                // Add the images
-                else {
-                    Bitmap image = BitmapHelper.decodeBitmapFromFile(file.getAbsolutePath(),
-                            50,
-                            50);
-                    items.add(new ImageItem(file.getAbsolutePath(), false, image));
-                }
+
             }
         }
         return items;
@@ -126,8 +132,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
 
 
     @Override
-    public void
-    onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         if (gridItems.get(position).isDirectory()) { //trinti šitą if, kai veiks
             setGridAdapter(gridItems.get(position).getPath());
@@ -145,7 +150,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
 
         @Override
         public boolean accept(File file) {
-            if (file.isDirectory()) { //trint
+            if (file.isDirectory()) {
                 return true;
             }
             else if (isImageFile(file.getAbsolutePath())) {
