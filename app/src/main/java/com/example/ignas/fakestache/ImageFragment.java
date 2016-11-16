@@ -1,13 +1,19 @@
 package com.example.ignas.fakestache;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -55,7 +61,8 @@ public class ImageFragment extends Fragment {
 
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
 
-        
+        imageView.setImageResource();
+
         return view;
     }
 
@@ -96,5 +103,14 @@ public class ImageFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private ImageItem createGridItems(String directoryPath) {
+
+        Bitmap image = BitmapHelper.decodeBitmapFromFile(file.getAbsolutePath(),
+                50,
+                50);
+
+        return item;
     }
 }
