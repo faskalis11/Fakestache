@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -15,13 +14,13 @@ import java.util.List;
  * Created by Ignas on 2016-11-13.
  */
 
-public class MyGridAdapter extends BaseAdapter {
+public class GridAdapter extends BaseAdapter {
 
     LayoutInflater inflater;
-    List<GridViewItem> items;
+    List<ImageItem> items;
 
 
-    public MyGridAdapter(Context context, List<GridViewItem> items) {
+    public GridAdapter(Context context, List<ImageItem> items) {
         this.items = items;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }

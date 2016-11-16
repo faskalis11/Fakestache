@@ -19,7 +19,7 @@ import java.util.List;
 public class GalleryFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     String path;
-    List<GridViewItem> gridItems;
+    List<ImageItem> gridItems;
     GridView gridView;
     public static final String IMAGEPATH = "IMAGEPATH";
 
@@ -60,7 +60,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
         // Create a new grid adapter
 
         gridItems = createGridItems(path);
-        MyGridAdapter adapter = new MyGridAdapter(this.getContext(), gridItems);
+        GridAdapter adapter = new GridAdapter(this.getContext(), gridItems);
         // Set the grid adapter on createView?
         //GridView gridView = (GridView) findViewById(R.id.gridView);
         gridView.setAdapter(adapter);
@@ -84,8 +84,8 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
      * Go through the specified directory, and create items to display in our
      * GridView
      */
-    private List<GridViewItem> createGridItems(String directoryPath) {
-        List<GridViewItem> items = new ArrayList<GridViewItem>();
+    private List<ImageItem> createGridItems(String directoryPath) {
+        List<ImageItem> items = new ArrayList<ImageItem>();
 
         // List all the items within the folder.
         File[] files = new File(directoryPath).listFiles(new ImageFileFilter());
@@ -104,7 +104,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
                     Bitmap image = BitmapHelper.decodeBitmapFromFile(file.getAbsolutePath(),
                             50,
                             50);
-                    items.add(new GridViewItem(file.getAbsolutePath(), false, image));
+                    items.add(new ImageItem(file.getAbsolutePath(), false, image));
                 }
             }
         }

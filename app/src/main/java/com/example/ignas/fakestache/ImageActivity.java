@@ -3,12 +3,15 @@ package com.example.ignas.fakestache;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class ImageActivity extends AppCompatActivity {
-
+    private ViewPager pager;
+    private PagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +20,11 @@ public class ImageActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Bundle bundle = getIntent().getExtras();
+        //String imagePath = bundle.getString(GalleryFragment.IMAGEPATH);
+        pager = (ViewPager) findViewById(R.id.imagePager);
 
+        pagerAdapter = new GridAdapter(getApplicationContext(), )
 
 
 
