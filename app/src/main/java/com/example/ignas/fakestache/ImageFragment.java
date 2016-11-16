@@ -69,7 +69,7 @@ public class ImageFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_image, container, false);
 
         path = getArguments().getString("path");
-
+fsd
 
     }
 
