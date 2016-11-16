@@ -47,7 +47,7 @@ public class EditActivity extends AppCompatActivity implements PermissionRequest
     protected void onActivityResult(int requestCode, int resultCode, android.content.Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == EDIT_RESULT) {
-            /*String path = data.getStringExtra(PhotoEditorActivity.);
+            /*String path = data.getStringExtra(PhotoEditorActivity.RES);
 
             Toast.makeText(this, "Image saved at: " + path, Toast.LENGTH_LONG).show();
 
