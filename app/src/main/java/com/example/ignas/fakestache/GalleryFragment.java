@@ -99,12 +99,12 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
             for (File file : files) {
 
                 // Add the directories containing images or sub-directories, trinti
-                if (!file.isFile() && file.listFiles(new ImageFileFilter()).length > 0) {
+                if (file.isDirectory() && file.listFiles(new ImageFileFilter()).length > 0) {
                         if (!file.getName().equals(".thumbnails")) {
                             items.addAll(createGridItems(file.getAbsolutePath()));
                             Log.d("DCIM", "Name: " + file.getName() + " Path: " + file.getPath());
                         }
-                    } else {
+                    } else if(file.isFile()) {
                         Bitmap image = BitmapHelper.decodeBitmapFromFile(file.getAbsolutePath(),
                                 200,
                                 200);

@@ -1,6 +1,5 @@
 package com.example.ignas.fakestache;
 
-import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -60,11 +59,9 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
                     }
                 }
                 // Add the images
-                else {
-                    Bitmap image = BitmapHelper.decodeBitmapFromFile(file.getAbsolutePath(),
-                            200,
-                            200);
-                    items.add(new ImageItem(file.getAbsolutePath(), false, image));
+                else if(file.isFile()){
+                    //Bitmap image = BitmapHelper.decodeBitmapFromFile(file.getAbsolutePath(), 200, 200);
+                    items.add(new ImageItem(file.getAbsolutePath(), false, null));
                 }
             }
         }
