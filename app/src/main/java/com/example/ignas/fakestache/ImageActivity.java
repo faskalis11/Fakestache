@@ -15,7 +15,6 @@ import android.widget.ViewSwitcher;
 
 public class ImageActivity extends AppCompatActivity {
 
-    private ImageSwitcher imageSwitcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +32,6 @@ public class ImageActivity extends AppCompatActivity {
             }
         });
 
-        imageSwitcher = (ImageSwitcher)findViewById(R.id.imageSwitcher);
-        imageSwitcher.setFactory((ViewSwitcher.ViewFactory) this);
-
-        Bundle b = getIntent().getExtras();
-        String path = b.getString(GalleryFragment.IMAGEPATH);
-
-
-
-        /*mSwitcher.setInAnimation(AnimationUtils.loadAnimation(this,
-                android.R.anim.fade_in));
-        mSwitcher.setOutAnimation(AnimationUtils.loadAnimation(this,
-                android.R.anim.fade_out));
-*/
 
     }
 
