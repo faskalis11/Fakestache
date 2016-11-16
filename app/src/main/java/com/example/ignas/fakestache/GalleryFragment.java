@@ -105,10 +105,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
                             Log.d("DCIM", "Name: " + file.getName() + " Path: " + file.getPath());
                         }
                     } else if(file.isFile()) {
-                        Bitmap image = BitmapHelper.decodeBitmapFromFile(file.getAbsolutePath(),
-                                200,
-                                200);
-                        Log.d("ImageFile", file.getName());
+                        Bitmap image = BitmapHelper.decodeBitmapFromFile(file.getAbsolutePath(), 256, 256);
                         items.add(new ImageItem(file.getAbsolutePath(), false, image));
                     }
 

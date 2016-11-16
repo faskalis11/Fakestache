@@ -1,18 +1,16 @@
 package com.example.ignas.fakestache;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
 public class ImageActivity extends AppCompatActivity {
     private ViewPager pager;
-    private PagerAdapter pagerAdapter;
+    private ImagePagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +26,6 @@ public class ImageActivity extends AppCompatActivity {
         pager = (ViewPager) findViewById(R.id.imagePager);
         pagerAdapter = new ImagePagerAdapter(getSupportFragmentManager(), imagePath);
         pager.setAdapter(pagerAdapter);
-        Log.d("Pager", "Position: " + position);
         pager.setCurrentItem(position);
 
 
@@ -41,18 +38,16 @@ public class ImageActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(ImageActivity.this, EditActivity.class);
+                Bundle bundle = new Bundle();
+                int position = pager.getCurrentItem();
+                ImageItem item = pagerAdapter.getImageItem(position);
+                bundle.putString(EditActivity.IMAGE_PATH, item.getPath());
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 
-
-    }
-
-    public void viewImage() {
-        //Bitmap bitmap;
-        //Drawable drawable =new BitmapDrawable(bitmap); // iš list
-        //imageSwitcher.setImageDrawable(drawable);
     }
 
 }

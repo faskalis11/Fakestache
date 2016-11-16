@@ -33,6 +33,11 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
         return ImageFragment.newInstance(items.get(position).getPath());
     }
 
+    public ImageItem getImageItem(int position){
+        position = items.size() - position - 1;
+        return items.get(position);
+    }
+
     @Override
     public int getCount() {
         return items.size();

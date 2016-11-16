@@ -5,15 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import ly.img.android.sdk.models.constant.Directory;
 import ly.img.android.sdk.models.state.EditorLoadSettings;
-import ly.img.android.sdk.models.state.EditorSaveSettings;
 import ly.img.android.sdk.models.state.manager.SettingsList;
 import ly.img.android.ui.activities.PhotoEditorBuilder;
 import ly.img.android.ui.utilities.PermissionRequest;
 
 public class EditActivity extends AppCompatActivity implements PermissionRequest.Response{
-    private static final String FOLDER = "Fakestache";
+
     public static final String IMAGE_PATH = "ImagePath";
     public static int EDIT_RESULT = 2;
 
@@ -25,17 +23,11 @@ public class EditActivity extends AppCompatActivity implements PermissionRequest
 
         String imagePath = bundle.getString(IMAGE_PATH);
 
-        //String imagePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).listFiles()[0].listFiles()[1].getPath();
-        SettingsList settingsList = new SettingsList();
+        SettingsList settingsList = PhotoEditorSettings.getSettings();
 
         settingsList.getSettingsModel(EditorLoadSettings.class)
-                .setImageSourcePath(imagePath)
-                .getSettingsModel(EditorSaveSettings.class)
-                .setExportDir(Directory.DCIM, FOLDER)
-                .setExportPrefix("fs_")
-                .setSavePolicy(
-                        EditorSaveSettings.SavePolicy.KEEP_SOURCE_AND_CREATE_ALWAYS_OUTPUT
-                );
+                .setImageSourcePath(imagePath);
+
 
         new PhotoEditorBuilder(this)
                 .setSettingsList(settingsList)
