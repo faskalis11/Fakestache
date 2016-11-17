@@ -1,6 +1,7 @@
 package com.example.ignas.fakestache;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 /**
  * Created by Ignas on 2016-11-13.
@@ -31,6 +32,23 @@ public class ImageItem {
 
 
     public Bitmap getImage() {
+        if (this.image == null){
+            this.image = BitmapHelper.decodeBitmapFromFile(path, 256, 256);
+            Log.d("Bitmap", "Decoding " + path);
+        }
         return image;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+       if (!(obj instanceof ImageItem)){
+           return false;
+       }
+        if(obj == this){
+            return true;
+        }
+        ImageItem item = (ImageItem) obj;
+        return item.getPath().equals(this.path);
+
     }
 }
