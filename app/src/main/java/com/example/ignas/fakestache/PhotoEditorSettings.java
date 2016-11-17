@@ -27,12 +27,12 @@ public class PhotoEditorSettings {
         settingsList.getSettingsModel(EditorSaveSettings.class)
                 .setExportDir(Directory.DCIM, FOLDER)
                 .setExportPrefix("result_")
-                .setSavePolicy(EditorSaveSettings.SavePolicy.KEEP_SOURCE_AND_CREATE_ALWAYS_OUTPUT)
+                .setSavePolicy(EditorSaveSettings.SavePolicy.RETURN_ALWAYS_ONLY_OUTPUT)
                 .getSettingsModel(CameraSettings.class)
                 .setExportDir(Directory.DCIM, FOLDER)
                 .setExportPrefix("camera_");
         ArrayList<AbstractConfig.StickerConfigInterface> stickers = new ArrayList<>();
-        stickers.add(new ImageStickerConfig(R.string.moustache2, R.drawable.moustache24643, R.drawable.moustache24643,));
+        stickers.add(new ImageStickerConfig(R.string.moustache2, R.drawable.moustache24643, R.drawable.moustache24643));
         stickers.add(new ImageStickerConfig(R.string.moustache3, R.drawable.moustache24725, R.drawable.moustache24725));
         stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.moustache24788, R.drawable.moustache24788));
         stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.moustache24907, R.drawable.moustache24907));
