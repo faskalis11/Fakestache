@@ -6,7 +6,7 @@
     <string name="tool_name_text">Text</string>
     <string name="tool_name_sticker">Stickers</string>
     <string name="title_activity_edit">Gallery</string>
-    <string name="title_activity_gallery">Gallery</string>
+    <string name="title_activity_gallery">Fakestache</string>
     <string name="title_activity_image">Photo</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
