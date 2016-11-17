@@ -39,7 +39,6 @@ public class PhotoEditorSettings {
         stickers.add(new ImageStickerConfig(R.string.moustache6, R.drawable.moustache24919, R.drawable.moustache24919));
         stickers.add(new ImageStickerConfig(R.string.moustache7, R.drawable.moustache24927, R.drawable.moustache24927));
         stickers.add(new ImageStickerConfig(R.string.moustache8, R.drawable.moustache24954, R.drawable.moustache24954));
-        // nauiji sticker
 
         settingsList.getConfig().setTools(
                 new CropEditorTool(R.string.tool_name_crop, R.drawable.imgly_icon_tool_crop),
