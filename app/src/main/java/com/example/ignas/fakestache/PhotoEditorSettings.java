@@ -49,8 +49,6 @@ public class PhotoEditorSettings {
                 new TextEditorTool(R.string.tool_name_text, R.drawable.imgly_icon_tool_text),
                 new StickerEditorTool(R.string.tool_name_sticker, R.drawable.imgly_icon_tool_sticker)
 
-        ).setStickers(
-                new ImageStickerConfig(R.string.moustache1, R.drawable.m1, R.drawable.m1)
         ).setStickers(stickers);
         return settingsList;
     }
