@@ -69,6 +69,7 @@ public class ImageActivity extends AppCompatActivity {
             Log.d("ImageActivity", "Edit success");
 
             pagerAdapter.update();
+            pagerAdapter.update();
             pagerAdapter.notifyDataSetChanged();
             pager.setCurrentItem(0);
         }else{
