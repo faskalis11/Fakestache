@@ -27,18 +27,19 @@ public class PhotoEditorSettings {
         settingsList.getSettingsModel(EditorSaveSettings.class)
                 .setExportDir(Directory.DCIM, FOLDER)
                 .setExportPrefix("result_")
-                .setSavePolicy(EditorSaveSettings.SavePolicy.RETURN_ALWAYS_ONLY_OUTPUT)
+                .setSavePolicy(EditorSaveSettings.SavePolicy.KEEP_SOURCE_AND_CREATE_ALWAYS_OUTPUT)
                 .getSettingsModel(CameraSettings.class)
                 .setExportDir(Directory.DCIM, FOLDER)
                 .setExportPrefix("camera_");
         ArrayList<AbstractConfig.StickerConfigInterface> stickers = new ArrayList<>();
-        stickers.add(new ImageStickerConfig(R.string.moustache2, R.drawable.moustache24643, R.drawable.moustache24643));
-        stickers.add(new ImageStickerConfig(R.string.moustache3, R.drawable.moustache24725, R.drawable.moustache24725));
-        stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.moustache24788, R.drawable.moustache24788));
-        stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.moustache24907, R.drawable.moustache24907));
-        stickers.add(new ImageStickerConfig(R.string.moustache6, R.drawable.moustache24919, R.drawable.moustache24919));
-        stickers.add(new ImageStickerConfig(R.string.moustache7, R.drawable.moustache24927, R.drawable.moustache24927));
-        stickers.add(new ImageStickerConfig(R.string.moustache8, R.drawable.moustache24954, R.drawable.moustache24954));
+        stickers.add(new ImageStickerConfig(R.string.moustache1, R.drawable.m1, R.drawable.m1));
+        stickers.add(new ImageStickerConfig(R.string.moustache2, R.drawable.m2, R.drawable.m2,));
+        stickers.add(new ImageStickerConfig(R.string.moustache3, R.drawable.m3, R.drawable.m3));
+        stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.m4, R.drawable.m4));
+        stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.m5, R.drawable.m5));
+        stickers.add(new ImageStickerConfig(R.string.moustache6, R.drawable.m6, R.drawable.m6));
+        stickers.add(new ImageStickerConfig(R.string.moustache7, R.drawable.m7, R.drawable.m7));
+        stickers.add(new ImageStickerConfig(R.string.moustache8, R.drawable.m8, R.drawable.m8));
 
         settingsList.getConfig().setTools(
                 new CropEditorTool(R.string.tool_name_crop, R.drawable.imgly_icon_tool_crop),
@@ -49,7 +50,7 @@ public class PhotoEditorSettings {
                 new StickerEditorTool(R.string.tool_name_sticker, R.drawable.imgly_icon_tool_sticker)
 
         ).setStickers(
-                new ImageStickerConfig(R.string.moustache1, R.drawable.moustache1, R.drawable.moustache1)
+                new ImageStickerConfig(R.string.moustache1, R.drawable.m1, R.drawable.m1)
         ).setStickers(stickers);
         return settingsList;
     }
