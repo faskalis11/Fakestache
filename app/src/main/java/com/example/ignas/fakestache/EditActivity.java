@@ -38,6 +38,7 @@ public class EditActivity extends AppCompatActivity implements PermissionRequest
     @Override
     protected void onActivityResult(int requestCode, int resultCode, android.content.Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.d("EditActivity", String.valueOf(resultCode));
         if (resultCode == RESULT_OK && requestCode == EDIT_RESULT) {
             /*String path = data.getStringExtra(PhotoEditorActivity.RES);
 
@@ -52,6 +53,7 @@ public class EditActivity extends AppCompatActivity implements PermissionRequest
                     }
             );*/
         }
+        setResult(resultCode, data);
         finish();
     }
 

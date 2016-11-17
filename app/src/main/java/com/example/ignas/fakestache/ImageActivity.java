@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 public class ImageActivity extends AppCompatActivity {
@@ -56,10 +57,17 @@ public class ImageActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == EDIT_RESULT){
+        if(requestCode == EDIT_RESULT && resultCode == -1){
+            //nuotrauka redaguota
+            Log.d("ImageActivity", String.valueOf(resultCode));
+            Log.d("ImageActivity", "Edit success");
             pagerAdapter.update();
             pagerAdapter.notifyDataSetChanged();
             pager.setCurrentItem(0);
+        }else{
+            //redagavimas atsauktas
+            Log.d("ImageActivity", String.valueOf(resultCode));
+            Log.d("ImageActivity", "Edit canceled");
         }
     }
 }
