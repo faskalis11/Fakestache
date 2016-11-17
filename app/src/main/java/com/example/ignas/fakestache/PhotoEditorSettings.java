@@ -32,13 +32,13 @@ public class PhotoEditorSettings {
                 .setExportDir(Directory.DCIM, FOLDER)
                 .setExportPrefix("camera_");
         ArrayList<AbstractConfig.StickerConfigInterface> stickers = new ArrayList<>();
-        stickers.add(new ImageStickerConfig(R.string.moustache2, R.drawable.ic_24643, R.drawable.ic_24643));
-        stickers.add(new ImageStickerConfig(R.string.moustache3, R.drawable.ic_24725, R.drawable.ic_24725));
-        stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.ic_24788, R.drawable.ic_24788));
-        stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.ic_24907, R.drawable.ic_24907));
-        stickers.add(new ImageStickerConfig(R.string.moustache6, R.drawable.ic_24919, R.drawable.ic_24919));
-        stickers.add(new ImageStickerConfig(R.string.moustache7, R.drawable.ic_24927, R.drawable.ic_24927));
-        stickers.add(new ImageStickerConfig(R.string.moustache8, R.drawable.ic_24954, R.drawable.ic_24954));
+        stickers.add(new ImageStickerConfig(R.string.moustache2, R.drawable.moustache24643, R.drawable.moustache24643,));
+        stickers.add(new ImageStickerConfig(R.string.moustache3, R.drawable.moustache24725, R.drawable.moustache24725));
+        stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.moustache24788, R.drawable.moustache24788));
+        stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.moustache24907, R.drawable.moustache24907));
+        stickers.add(new ImageStickerConfig(R.string.moustache6, R.drawable.moustache24919, R.drawable.moustache24919));
+        stickers.add(new ImageStickerConfig(R.string.moustache7, R.drawable.moustache24927, R.drawable.moustache24927));
+        stickers.add(new ImageStickerConfig(R.string.moustache8, R.drawable.moustache24954, R.drawable.moustache24954));
         // nauiji sticker
 
         settingsList.getConfig().setTools(
