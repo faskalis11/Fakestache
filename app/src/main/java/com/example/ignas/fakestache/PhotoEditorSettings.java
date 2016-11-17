@@ -27,7 +27,7 @@ public class PhotoEditorSettings {
         settingsList.getSettingsModel(EditorSaveSettings.class)
                 .setExportDir(Directory.DCIM, FOLDER)
                 .setExportPrefix("result_")
-                .setSavePolicy(EditorSaveSettings.SavePolicy.KEEP_SOURCE_AND_CREATE_ALWAYS_OUTPUT)
+                .setSavePolicy(EditorSaveSettings.SavePolicy.RETURN_ALWAYS_ONLY_OUTPUT)
                 .getSettingsModel(CameraSettings.class)
                 .setExportDir(Directory.DCIM, FOLDER)
                 .setExportPrefix("camera_");
