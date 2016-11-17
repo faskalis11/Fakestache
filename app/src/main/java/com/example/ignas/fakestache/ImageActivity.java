@@ -53,6 +53,12 @@ public class ImageActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        pagerAdapter.update();
+        pagerAdapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -61,6 +67,7 @@ public class ImageActivity extends AppCompatActivity {
             //nuotrauka redaguota
             Log.d("ImageActivity", String.valueOf(resultCode));
             Log.d("ImageActivity", "Edit success");
+
             pagerAdapter.update();
             pagerAdapter.notifyDataSetChanged();
             pager.setCurrentItem(0);
@@ -69,5 +76,12 @@ public class ImageActivity extends AppCompatActivity {
             Log.d("ImageActivity", String.valueOf(resultCode));
             Log.d("ImageActivity", "Edit canceled");
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        pagerAdapter.update();
+        pagerAdapter.notifyDataSetChanged();
     }
 }
