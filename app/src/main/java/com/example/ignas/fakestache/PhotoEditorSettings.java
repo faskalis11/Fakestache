@@ -33,7 +33,7 @@ public class PhotoEditorSettings {
                 .setExportPrefix("camera_");
         ArrayList<AbstractConfig.StickerConfigInterface> stickers = new ArrayList<>();
         stickers.add(new ImageStickerConfig(R.string.moustache1, R.drawable.m1, R.drawable.m1));
-        stickers.add(new ImageStickerConfig(R.string.moustache2, R.drawable.m2, R.drawable.m2,));
+        stickers.add(new ImageStickerConfig(R.string.moustache2, R.drawable.m2, R.drawable.m2));
         stickers.add(new ImageStickerConfig(R.string.moustache3, R.drawable.m3, R.drawable.m3));
         stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.m4, R.drawable.m4));
         stickers.add(new ImageStickerConfig(R.string.moustache5, R.drawable.m5, R.drawable.m5));
