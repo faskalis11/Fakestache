@@ -7,9 +7,16 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 public class GalleryActivity extends AppCompatActivity {
+
+    public static int NEW_PHOTO_RESULT = 2;
+
+    public ImageItem newItem;
+    private ViewPager viewPager;
+    private GalleryPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +32,11 @@ public class GalleryActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Fakestache photos"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final GalleryPagerAdapter adapter = new GalleryPagerAdapter(getSupportFragmentManager());
+
+
+
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        adapter = new GalleryPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -57,11 +67,19 @@ public class GalleryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(GalleryActivity.this, CameraActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, NEW_PHOTO_RESULT);
             }
         });
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == NEW_PHOTO_RESULT){
+            Log.d("GalleryActivity", "onActivityResult");
 
+        }
+
+    }
 }

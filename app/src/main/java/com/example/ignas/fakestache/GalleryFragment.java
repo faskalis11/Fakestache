@@ -21,8 +21,13 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
     String path;
     List<ImageItem> gridItems;
     GridView gridView;
+    private GridAdapter adapter;
+    private ImageItem newItem;
+
     public static final String IMAGEPATH = "IMAGEPATH";
     public static final String POSITION = "POSITION";
+
+
 
     public static GalleryFragment newInstance(String path){
         GalleryFragment fragment = new GalleryFragment();
@@ -46,10 +51,17 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
         Log.d("DCIM", path);
         setGridAdapter(path);
 
-
-
         return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //Log.d("GalleryFragment", "onStart");
+        updateGridItems(path);
+        adapter.notifyDataSetChanged();
+    }
+
 
     /**
      * This will create our GridViewItems and set the adapter
@@ -60,14 +72,19 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
     private void setGridAdapter(final String path) {
         // Create a new grid adapter
 
-        gridItems = createGridItems(path);
+        if(gridItems != null){
+            gridItems.addAll(createGridItems(path));
+        }else{
+            gridItems = createGridItems(path);
+        }
+
+
         for (ImageItem item : gridItems){
             Log.d("GridItem", item.getPath());
         }
 
-        GridAdapter adapter = new GridAdapter(this.getContext(), gridItems);
+        adapter = new GridAdapter(this.getContext(), gridItems);
         // Set the grid adapter on createView?
-        //GridView gridView = (GridView) findViewById(R.id.gridView);
         gridView.setAdapter(adapter);
 
         // Set the onClickListener
@@ -84,7 +101,6 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
             }
         });
     }
-
 
     /**
      * Go through the specified directory, and create items to display in our
@@ -114,6 +130,30 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
         return items;
     }
 
+
+    private void updateGridItems(String directoryPath) {
+
+        Log.d("GalleryFragment", "updateGridItems");
+        // List all the items within the folder.
+        File[] files = new File(directoryPath).listFiles(new ImageFileFilter());
+        if(files != null) {
+            for (File file : files) {
+
+                // Add the directories containing images or sub-directories, trinti
+                if (file.isDirectory() && file.listFiles(new ImageFileFilter()).length > 0) {
+                    if (!file.getName().equals(".thumbnails")) {
+                        updateGridItems(file.getAbsolutePath());
+                    }
+                } else if(file.isFile()) {
+                    ImageItem item = new ImageItem(file.getAbsolutePath(), false, null);
+                    if(!(gridItems.contains(item))){
+                        //found new photo, add to gridItems
+                        gridItems.add(item);
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * Checks the file to see if it has a compatible extension.

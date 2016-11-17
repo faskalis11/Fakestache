@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class ImageActivity extends AppCompatActivity {
+    public static final int EDIT_RESULT = 3;
+
     private ViewPager pager;
     private ImagePagerAdapter pagerAdapter;
 
@@ -44,10 +46,20 @@ public class ImageActivity extends AppCompatActivity {
                 ImageItem item = pagerAdapter.getImageItem(position);
                 bundle.putString(EditActivity.IMAGE_PATH, item.getPath());
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent, EDIT_RESULT);
             }
         });
 
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == EDIT_RESULT){
+            pagerAdapter.update();
+            pagerAdapter.notifyDataSetChanged();
+            pager.setCurrentItem(0);
+        }
+    }
 }

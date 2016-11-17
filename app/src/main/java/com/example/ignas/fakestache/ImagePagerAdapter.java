@@ -44,10 +44,7 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
     }
 
 
-    /**
-    *Go through the specified directory, and create items to display in our
-    * GridView
-    */
+
     private List<ImageItem> createItems(String directoryPath) {
         List<ImageItem> items = new ArrayList<ImageItem>();
 
@@ -71,6 +68,35 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
             }
         }
         return items;
+    }
+
+    public void update(){
+        updateItems(path);
+    }
+    private void updateItems(String directoryPath) {
+
+        Log.d("ImagePagerAdapter", "updateGridItems");
+        Log.d("ImagePagerAdapter", directoryPath);
+        // List all the items within the folder.
+        File[] files = new File(directoryPath).listFiles(new ImagePagerAdapter.ImageFileFilter());
+        if(files != null) {
+            for (File file : files) {
+
+                // Add the directories containing images or sub-directories, trinti
+                if (file.isDirectory() && file.listFiles(new ImagePagerAdapter.ImageFileFilter()).length > 0) {
+                    if (!file.getName().equals(".thumbnails")) {
+
+                        updateItems(file.getAbsolutePath());
+                    }
+                } else if(file.isFile()) {
+                    ImageItem item = new ImageItem(file.getAbsolutePath(), false, null);
+                    if(!(items.contains(item))){
+                        //found new photo, add to gallery
+                        items.add(item);
+                    }
+                }
+            }
+        }
     }
 
 

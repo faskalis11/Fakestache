@@ -38,4 +38,17 @@ public class ImageItem {
         }
         return image;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+       if (!(obj instanceof ImageItem)){
+           return false;
+       }
+        if(obj == this){
+            return true;
+        }
+        ImageItem item = (ImageItem) obj;
+        return item.getPath().equals(this.path);
+
+    }
 }

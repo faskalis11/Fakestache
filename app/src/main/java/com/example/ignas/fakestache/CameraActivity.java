@@ -1,5 +1,6 @@
 package com.example.ignas.fakestache;
 
+import android.content.Intent;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -46,6 +47,9 @@ public class CameraActivity extends AppCompatActivity implements PermissionReque
                         }
                     }
             );
+            Intent result = new Intent();
+            result.putExtra("path", path);
+            setResult(1, result);
         }
         finish();
     }

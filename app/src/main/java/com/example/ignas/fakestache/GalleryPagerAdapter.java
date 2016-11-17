@@ -22,11 +22,12 @@ public class GalleryPagerAdapter extends FragmentStatePagerAdapter {
         if(position == 0){
             //visos nuotraukos
 
-
             return GalleryFragment.newInstance(absPath);
+
         }else if(position == 1){
             //fakestache nuotraukos
             return GalleryFragment.newInstance(absPath + "/Fakestache");
+
         }else{
             return  null;
         }
