@@ -40,6 +40,7 @@ public class PhotoEditorSettings {
         stickers.add(new ImageStickerConfig(R.string.moustache6, R.drawable.m6, R.drawable.m6));
         stickers.add(new ImageStickerConfig(R.string.moustache7, R.drawable.m7, R.drawable.m7));
         stickers.add(new ImageStickerConfig(R.string.moustache8, R.drawable.m8, R.drawable.m8));
+        stickers.add(new ImageStickerConfig(R.string.great, R.drawable.great, R.drawable.great));
 
         settingsList.getConfig().setTools(
                 new CropEditorTool(R.string.tool_name_crop, R.drawable.imgly_icon_tool_crop),
